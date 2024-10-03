@@ -15,18 +15,18 @@
 ## 02 模块说明
 
 ```
-shop-ease					项目名
-├─document					项目文档
-├─logs						项目日志
-├─shop-ease-common			通用模块
-├─shop-ease-mbg				数据模型与映射关系（mybatis generated）
-├─shop-ease-module			业务模块集合
-│  ├─shop-ease-auth-module	认证模块
-│  └─shop-ease-user-module	用户模块
-├─shop-ease-new				新模块
-└─shop-ease-server			服务器启动
+shop-ease                   项目名
+├─document                  项目文档
+├─logs                      项目日志
+├─shop-ease-common          通用模块
+├─shop-ease-mbg             数据模型与映射关系（mybatis generated）
+├─shop-ease-module          业务模块集合
+│  ├─shop-ease-auth-module  认证模块
+│  └─shop-ease-user-module  用户模块
+├─shop-ease-new             新模块
+└─shop-ease-server          服务器启动
 ```
 
-03 模块之间依赖关系
+## 03 模块之间依赖关系
 
 ![Module dependencies](./document/img/模块依赖关系.png)
