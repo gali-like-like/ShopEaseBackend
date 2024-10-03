@@ -86,9 +86,5 @@
       <groupId>com.qiniu</groupId>
       <artifactId>qiniu-java-sdk</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.qiniu</groupId>
-      <artifactId>happy-dns-java</artifactId>
-    </dependency>
   </dependencies>
 </project>
