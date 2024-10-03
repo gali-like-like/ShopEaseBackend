@@ -1,146 +1,32 @@
-# SpringBoot 项目初始模板
+## 01 技术选型
 
-基于 Java SpringBoot 的项目初始模板，整合了常用框架和主流业务的示例代码。
+| **技术名称**     | **版本号**        | **描述**                                                     |
+| ---------------- | ----------------- | ------------------------------------------------------------ |
+| **MyBatis**      | 3.0.3             | 一款流行的持久层框架，用于简化数据库操作与SQL映射。          |
+| **MyBatis-Plus** | 3.5.5             | MyBatis的增强工具，提供了更多的功能和简化的CRUD操作。        |
+| **wx-java-mp**   | 4.6.0             | 微信公众号开发的Java SDK，简化微信接口的集成与调用。         |
+| **Knife4j**      | 4.4.0             | 基于Swagger的API文档生成工具，提供更友好的文档界面和功能。   |
+| **COS API**      | 5.6.89            | 腾讯云对象存储（COS）的API版本，用于文件存储与管理。         |
+| **EasyExcel**    | 4.0.3             | 阿里巴巴的高性能Excel处理工具，支持快速读写Excel文件。       |
+| **Hutool**       | 5.8.16            | 一款全面的Java工具库，提供丰富的工具类以简化开发工作。       |
+| **七牛SDK**      | [7.16.0, 7.16.99] | 七牛云存储的Java SDK，支持文件上传、下载及管理功能，版本范围为7.16.0到7.16.99。 |
+| **Sa-Token**     | 1.39.0            | 轻量级的Java权限验证框架，提供认证、授权、单点登录等功能。   |
 
-只需 1 分钟即可完成内容网站的后端！！！大家还可以在此基础上快速开发自己的项目。
-
-## 模板特点
-
-### 主流框架 & 特性
-
-- Spring Boot 3.3.4（贼新）
-- Spring MVC
-- MyBatis + MyBatis Plus 数据访问（开启分页）
-- Spring Boot 调试工具和项目处理器
-- Spring AOP 切面编程
-- Spring Scheduler 定时任务
-- Spring 事务注解
-
-### 数据存储
-
-- MySQL 数据库
-- Redis 内存数据库
-- Elasticsearch 搜索引擎
-- 腾讯云 COS 对象存储
-
-### 工具类
-
-- Easy Excel 表格处理
-- Hutool 工具库
-- Apache Commons Lang3 工具类
-- Lombok 注解
-
-### 业务特性
-
-- Spring Session Redis 分布式登录
-- 全局请求响应拦截器（记录日志）
-- 全局异常处理器
-- 自定义错误码
-- 封装通用响应类
-- Swagger + Knife4j 接口文档
-- 自定义权限注解 + 全局校验
-- 全局跨域处理
-- 长整数丢失精度解决
-- 多环境配置
-
-### 单元测试
-
-- JUnit5 单元测试
-- 示例单元测试类
-
-### 架构设计
-
-- 合理分层
-
-
-## 快速上手
-
-> 所有需要修改的地方都被标记了 `todo`，便于大家找到修改的位置~
-
-### MySQL 数据库
-
-1）修改 `application-dev.yml` 的数据库配置为你自己的：
-
-```yml
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/init-db
-    username: root
-    password: 123456
-```
-
-2）执行 `sql/create_table.sql` 中的数据库语句，自动创建库表
-
-3）启动项目，访问 `http://localhost:8101/api/doc.html` 即可打开接口文档，不需要写前端就能在线调试接口了~
-
-![](doc/swagger.png)
-
-### Redis 分布式登录
-
-1）修改 `application.yml` 的 Redis 配置为你自己的：
-
-```yml
-spring:
-  redis:
-    database: 1
-    host: localhost
-    port: 6379
-    timeout: 5000
-    password: 123456
-```
-
-2）修改 `application.yml` 中的 session 存储方式：
-
-```yml
-spring:
-  session:
-    store-type: redis
-```
-
-3）移除 `MainApplication` 类开头 `@SpringBootApplication` 注解内的 exclude 参数：
-
-修改前：
-
-```java
-@SpringBootApplication(exclude = {RedisAutoConfiguration.class})
-```
-
-修改后：
-
-
-```java
-@SpringBootApplication
-```
-
-### Elasticsearch 搜索引擎
-
-1）修改 `application.yml` 的 Elasticsearch 配置为你自己的：
-
-```yml
-spring:
-  elasticsearch:
-    uris: http://localhost:9200
-    username: root
-    password: 123456
-```
-
-2）复制 `sql/post_es_mapping.json` 文件中的内容，通过调用 Elasticsearch 的接口或者 Kibana Dev Tools 来创建索引（相当于数据库建表）
+## 02 模块说明
 
 ```
-PUT post_v1
-{
- 参数见 sql/post_es_mapping.json 文件
-}
+shop-ease					项目名
+├─document					项目文档
+├─logs						项目日志
+├─shop-ease-common			通用模块
+├─shop-ease-mbg				数据模型与映射关系（mybatis generated）
+├─shop-ease-module			业务模块集合
+│  ├─shop-ease-auth-module	认证模块
+│  └─shop-ease-user-module	用户模块
+├─shop-ease-new				新模块
+└─shop-ease-server			服务器启动
 ```
 
-这步不会操作的话需要补充下 Elasticsearch 的知识，或者自行百度一下~
+03 模块之间依赖关系
 
-3）开启同步任务，将数据库的帖子同步到 Elasticsearch
-
-找到 job 目录下的 `FullSyncPostToEs` 和 `IncSyncPostToEs` 文件，取消掉 `@Component` 注解的注释，再次执行程序即可触发同步：
-
-```java
-// todo 取消注释开启任务
-//@Component
-```
+![Module dependencies](./document/img/模块依赖关系.png)
