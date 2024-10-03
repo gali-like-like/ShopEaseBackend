@@ -7,24 +7,24 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/init
+    url: jdbc:mysql://116.62.66.185:3306/shop_ease?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Shanghai
     username: root
-    password: 123456
+    password: 7890asdf
   # Redis 配置
   # todo 需替换配置
   data:
     redis:
       database: 1
-      host: localhost
+      host: 116.62.66.185
       port: 6379
       timeout: 5000
-      password: 123456
+      password: leapsss
   # Elasticsearch 配置
   # todo 需替换配置
   elasticsearch:
-    uris: http://localhost:9200
+    uris: http://116.62.66.185:9200
     username: root
-    password: 123456
+    password: 7890asdf
 
 
 mybatis-plus:

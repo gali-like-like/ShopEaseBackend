@@ -37,6 +37,7 @@
         <hutool.version>5.8.8</hutool.version>
         <qiniu-sdk.version>[7.16.0, 7.16.99]</qiniu-sdk.version>
         <happy-dns.version>0.1.6</happy-dns.version>
+        <sa-token.version>1.39.0</sa-token.version>
     </properties>
     
     <dependencies>
@@ -70,6 +71,18 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <!-- Sa-Token 整合 Redis （使用 jackson 序列化方式） -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.binarywang</groupId>
