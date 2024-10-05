@@ -11,4 +11,6 @@ public class ShopEaseServerApplication {
         SpringApplication.run(ShopEaseServerApplication.class, args);
     }
 
+
+
 }
