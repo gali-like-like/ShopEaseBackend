@@ -69,8 +69,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
             // 3. 插入数据
             User user = new User();
-            user.setUserAccount(userAccount);
-            user.setUserPassword(encryptPassword);
+            user.setUsername(userAccount);
+            user.setPassword(encryptPassword);
             boolean saveResult = this.save(user);
             if (!saveResult) {
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");

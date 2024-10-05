@@ -25,7 +25,7 @@ public class Appraise implements Serializable {
     @NotNull(message = "商品id不能为空")
     private Integer goodsId;
 
-    private String mainComment;
+    private String mainComment;//评价的文本信息
 
     private Byte level;//评价级别
 
@@ -37,4 +37,10 @@ public class Appraise implements Serializable {
     private String image2;
 
     private String image3;
+
+    private Integer likeNum;//点赞数
+
+    private Byte isPublic;//是否公开
+
+    private Integer reply;//回复评论id
 }
