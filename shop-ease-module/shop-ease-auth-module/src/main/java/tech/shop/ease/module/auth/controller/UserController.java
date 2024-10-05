@@ -151,17 +151,17 @@ public class UserController {
      * @param request
      * @return
      */
-    @PostMapping("/add")
-    public BaseResponse<Long> addUser(@RequestBody UserAddRequest userAddRequest, HttpServletRequest request) {
-        if (userAddRequest == null) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR);
-        }
-        User user = new User();
-        BeanUtils.copyProperties(userAddRequest, user);
-        boolean result = userService.save(user);
-        ThrowUtil.throwIf(!result, ErrorCode.OPERATION_ERROR);
-        return ResultUtil.success(user.getId());
-    }
+//    @PostMapping("/add")
+//    public BaseResponse<Long> addUser(@RequestBody UserAddRequest userAddRequest, HttpServletRequest request) {
+//        if (userAddRequest == null) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
+//        User user = new User();
+//        BeanUtils.copyProperties(userAddRequest, user);
+//        boolean result = userService.save(user);
+//        ThrowUtil.throwIf(!result, ErrorCode.OPERATION_ERROR);
+//        return ResultUtil.success(user.getId());
+//    }
 
     /**
      * feat: 删除用户

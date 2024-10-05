@@ -1,9 +1,12 @@
 package tech.shop.ease.mbg.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -11,60 +14,42 @@ import java.util.Date;
  *
  * @author jony
  */
-@TableName(value = "user")
+@TableName(value = "user_user")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-    /**
-     * feat: id
-     */
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
-    /**
-     * feat: 用户账号
-     */
-    private String userAccount;
-    /**
-     * feat: 用户密码
-     */
-    private String userPassword;
-    /**
-     * feat: 开放平台id
-     */
-    private String unionId;
-    /**
-     * feat: 公众号openId
-     */
-    private String mpOpenId;
-    /**
-     * feat: 用户昵称
-     */
-    private String userName;
-    /**
-     * feat: 用户头像
-     */
-    private String userAvatar;
-    /**
-     * feat: 用户简介
-     */
-    private String userProfile;
-    /**
-     * feat: 用户角色：user/admin/ban
-     */
-    private String userRole;
-    /**
-     * feat: 创建时间
-     */
-    private Date createTime;
-    /**
-     * feat: 更新时间
-     */
-    private Date updateTime;
-    /**
-     * feat: 是否删除
-     */
+
+    @TableId(type=IdType.ASSIGN_UUID)
+    private Integer id;
+
+    private String name;//用户昵称
+
+    private String username;//用户密码
+
+    @TableField(fill = FieldFill.INSERT)
+    private String password;
+
+    private String header;//用户头像
+
+    @TableField(value = "is_exists")
     @TableLogic
-    private Integer isDelete;
+    private Boolean isExists;
+
+    private String phone;
+
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+
+    @TableField(value = "delete_time", fill = FieldFill.UPDATE)
+    private LocalDateTime deleteTime;
+
+    @TableField
+    private Integer inviterId;//邀请人id
+
+    @TableField(fill = FieldFill.INSERT)
+    private Integer points;//积分
 }

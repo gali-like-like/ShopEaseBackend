@@ -1,10 +1,10 @@
 # 公共配置文件
 spring:
   application:
-    name: shop-ease
+    name: springboot-init
   # 默认 dev 环境
   profiles:
-    active: prod
+    active: dev
   # 支持 knife4j
   mvc:
     pathmatch:
@@ -87,8 +87,3 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
-    
-#日志配置
-logging:
-  config: classpath:logback-spring.xml
-
